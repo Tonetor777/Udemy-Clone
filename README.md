@@ -1,9 +1,4 @@
-"# Udemy-Clone" 
-Sure, here's a template for a README file for your Udemy clone project:
-
----
-
-# Udemy Clone
+ # Udemy Clone
 
 This repository contains the code for a Udemy clone project. The project aims to replicate the functionality and user experience of the popular online learning platform Udemy, with a focus on both frontend and backend development.
 
@@ -95,7 +90,3 @@ Contributions to the Udemy Clone project are welcome! To contribute, please foll
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-
----
-
-Feel free to customize the content and structure of the README file based on your specific project requirements and preferences.
