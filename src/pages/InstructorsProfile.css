@@ -1,0 +1,63 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333333;
+    color: #ffffff;
+    padding: 10px 20px;
+  }
+  
+  .navbar-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-container a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .navbar-links {
+    display: flex;
+  }
+  
+  .navbar-links li {
+    list-style-type: none;
+    margin-left: 20px;
+  }
+  
+  .course-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .course-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .course-card h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .course-card p {
+    margin-bottom: 10px;
+  }
+  
+  .footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #999999;
+  }
+  
