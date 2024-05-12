@@ -84,8 +84,6 @@
     // </div>
 //   );
 // };
-
-// export default Signup;
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -94,6 +92,7 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
 
   const nameHandler = (event) => {
     setName(event.target.value);
@@ -107,43 +106,44 @@ const Signup = () => {
     setEmail(event.target.value);
   };
 
-  const registerRequest = async () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    formData.append("type", "register");
+
     try {
-      const response = await fetch(
-        "http://localhost/UDEMY-CLONE/Udemy-clone/PHP/api.php/SignUpPage",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            name: name,
-            password: password,
-            email: email,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      if (response.ok) {
-        const data = await response.json();
-        if (data && data.status) {
-          localStorage.setItem("token", data.status);
-          navigate("/confirm");
-        } else {
-          // Handle error here
-          console.error("Error occurred during registration");
-        }
+      const response = await fetch("http://localhost/PHP/PHP/emailValidate.php", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+      if (data && data.status === "success") {
+        const insertFormData = new FormData();
+        insertFormData.append("name", name);
+        insertFormData.append("email", email);
+        insertFormData.append("password", password);
+        insertFormData.append("tableName", "Users");
+
+        const insertResponse = await fetch(
+          "http://localhost/PHP/PHP/insertTOTables.php",
+          {
+            method: "POST",
+            body: insertFormData,
+          }
+        );
+
+        const insertData = await insertResponse.json();
+        console.log(insertData);
+        // Optionally, you can redirect the user to a confirmation page
+        navigate("/confirm");
       } else {
-        // Handle non-200 response here
-        console.error("Non-200 response received");
+        setError(data.message);
       }
     } catch (error) {
-      console.error("Error occurred:", error.message);
+      console.error("Error:", error);
+      setError("An error occurred. Please try again later.");
     }
-  };
-
-  const submitHandler = (event) => {
-    event.preventDefault();
-    registerRequest();
   };
 
   return (
@@ -152,7 +152,8 @@ const Signup = () => {
         <h1 className="text-3xl font-bold ml-4 mb-8">
           Sign up and start learning
         </h1>
-        <form className="space-y-4" onSubmit={submitHandler}>
+        {error && <div className="text-red-600">{error}</div>}
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="border px-6 border-black overflow-hidden transition-all duration-300">
             <label htmlFor="name" className="block mb-1 pt-8 font-semibold">
               Full name
@@ -161,8 +162,10 @@ const Signup = () => {
               type="text"
               id="name"
               name="name"
+              value={name}
               onChange={nameHandler}
               className="w-full px-3 focus:outline-none"
+              required
             />
           </div>
 
@@ -174,10 +177,13 @@ const Signup = () => {
               type="email"
               id="email"
               name="email"
+              value={email}
               onChange={emailHandler}
               className="w-full border rounded px-3 focus:outline-none"
+              required
             />
           </div>
+
           <div className="border px-6 border-black overflow-hidden">
             <label htmlFor="password" className="block mb-1 pt-8 font-semibold">
               Password
@@ -186,8 +192,10 @@ const Signup = () => {
               type="password"
               id="password"
               name="password"
+              value={password}
               onChange={passwordHandler}
               className="w-full border rounded px-3 focus:outline-none"
+              required
             />
           </div>
 
