@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './InstructorsProfile.css';
 
-const Navbar = (
-) => {
+const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -19,9 +18,7 @@ const Navbar = (
   );
 };
 
-// Footer component
-const Footer = (
-) => {
+const Footer = () => {
   return (
     <footer className="footer">
       <p>Udemy© 2023</p>
@@ -29,9 +26,7 @@ const Footer = (
   );
 };
 
-// CourseCards component
-const CourseCards = (
-) => {
+const CourseCards = () => {
   return (
     <div className="course-cards">
       <div className="course-card">
@@ -48,12 +43,41 @@ const CourseCards = (
   );
 };
 
-function InstructorsProfile(
-) {
+function InstructorsProfile() {
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
+  const handleFileUpload = () => {
+    if (selectedFile) {
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+
+      fetch('http://localhost:8003/UDEMY/PHP/upload.php', {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+      
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    }
+  };
+
   return (
     <div className="app">
       <Navbar />
       <CourseCards />
+      <div className="file-upload">
+        <input type="file" onChange={handleFileChange} />
+        <button onClick={handleFileUpload}>Upload File</button>
+      </div>
       <Footer />
     </div>
   );
