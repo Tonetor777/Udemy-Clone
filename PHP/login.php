@@ -27,8 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result->num_rows > 0) {
             $user = $result->fetch_assoc();
             if (password_verify($password, $user['password'])) {
-                echo json_encode(["message" => "Login successful", "user" => $user]);
+                http_response_code(200);
+                echo json_encode(["Status" => "OK", "message" => "Login successful", "user" => $user]);
             } else {
+                http_response_code(401);
                 echo json_encode(["message" => "Incorrect password"]);
             }
         } else {

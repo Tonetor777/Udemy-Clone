@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import axios from "axios";
 
 const Signup = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -128,9 +127,9 @@ const Signup = () => {
         </div>
         <p className="text-center mt-4">
           Already have an account?{" "}
-          <a href="/login" className="text-purple-900 font-bold underline">
-            Log in
-          </a>
+          <Link to="/login" className="text-purple-900 font-bold underline">
+    Log in
+  </Link>
         </p>
       </div>
     </div>
