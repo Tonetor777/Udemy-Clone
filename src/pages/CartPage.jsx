@@ -1,8 +1,8 @@
-import React from 'react';
+import {React }from 'react';
 import { useCartContext } from '../context/cart_context';
 import CartItem from '../components/CartItem';
 import { MdClear } from 'react-icons/md';
-
+import { NavLink } from 'react-router-dom';
 const CartPage = () => {
   const { cart: cartItems, total_items, total_amount, clearCart } = useCartContext();
 
@@ -38,7 +38,7 @@ const CartPage = () => {
             <div className="font-semibold text-lg mb-4">Total:</div>
             <div className="font-bold text-2xl">${total_amount.toFixed(2)}</div>
             <button className="bg-purple-500 text-white px-8 py-2 mt-4 font-semibold hover:bg-purple-600 transition duration-300">
-              Checkout
+            <NavLink to="/check" activeClassName="active">Checkout</NavLink>
             </button>
           </div>
         </div>
