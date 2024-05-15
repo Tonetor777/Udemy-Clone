@@ -9,7 +9,6 @@ This repository contains the code for a Udemy clone project. The project aims to
 - [Technologies Used](#technologies-used)
 - [Setup Instructions](#setup-instructions)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
@@ -29,7 +28,7 @@ The Udemy Clone project is a web application designed to provide users with a pl
 - **Frontend**: React
 - **Backend**: PHP
 - **Database**: MySQL
-- **Styling**: CSS, Bootstrap
+- **Styling**: CSS, Tailwind
 - **Authentication**: JSON Web Tokens (JWT)
 
 ## Setup Instructions
@@ -86,7 +85,3 @@ Contributions to the Udemy Clone project are welcome! To contribute, please foll
 4. Commit your changes (`git commit -am 'Add new feature'`).
 5. Push to the branch (`git push origin feature-branch`).
 6. Create a new Pull Request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
