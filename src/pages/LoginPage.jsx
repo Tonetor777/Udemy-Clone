@@ -1,7 +1,8 @@
-import { useState , useEffect } from 'react';
+import { useState , useEffect, useContext } from 'react';
 import {Link , useNavigate} from 'react-router-dom'
 import axios from 'axios'; 
 import GoogleIcon from '@mui/icons-material/Google';
+import { AuthContext } from '../components/AuthContext';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -9,6 +10,7 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const [msg, setMsg] = useState('');
   const navigate = useNavigate()
+  const { login } = useContext(AuthContext);
 
   useEffect(() => {
     setError('');
@@ -44,6 +46,7 @@ const LoginPage = () => {
       
       console.log(response)
       if(response.data.Status === "OK"){
+        login(response.data.user);
           navigate("/")
       }
       setError(response.data.message)
