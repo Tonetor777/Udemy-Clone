@@ -1,8 +1,28 @@
-import React from 'react'
+import React, { useState , useEffect} from 'react'
 import AppleIcon from "@mui/icons-material/Apple";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 const LoginPage = () => {
+  const [email , setEmail] = useState("");
+  const [pass , setPass] = useState("");
+  const [error , setError] = useState("");
+  const [msg , setMsg] = useState("");
+  
+  const handleInputChange = (e , type) => {
+      switch(type){
+        case "email":
+          setError("");
+          setEmail(e.target.value); 
+          break; 
+        case "pass":
+          setError("");
+          setPass(e.target.value);
+          break;
+      }
+  }
+
+
+
   return (
     <div className="flex items-center justify-center min-h-screen ">
       <div className="w-full max-w-2xl">
@@ -10,6 +30,13 @@ const LoginPage = () => {
           Log in to your Udemy account
         </h1>
         <form className="space-y-4 ">
+          <p>
+            {
+              error !== '' ? 
+              <span className='text-2xl text-red-500'> {error} </span> :
+              <span className='text-2xl text-green-500'> {msg} </span>
+            }
+          </p>
           <div className="w-full max-w-2xl">
             <div className=" flex j border border-black overflow-hidden transition-all duration-300">
               <div>
@@ -66,6 +93,8 @@ const LoginPage = () => {
               id="email"
               name="email"
               className="w-full border rounded px-3  focus:outline-none"
+              value={email}
+              onChange={(e) => handleInputChange(e , "email")}
             />
           </div>
           <div className="  border  px-6 border-black  overflow-hidden">
@@ -77,6 +106,8 @@ const LoginPage = () => {
               id="password"
               name="password"
               className="w-full border rounded px-3 focus:outline-none "
+              value={pass}
+              onChange={(e) => handleInputChange(e , "pass")}
             />
           </div>
 
