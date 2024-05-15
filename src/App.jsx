@@ -11,7 +11,7 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import { AuthProvider } from './components/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
-
+import Checkout from "./components/checkout/checkout";
 function App() {
   return (
     <AuthProvider>
@@ -31,6 +31,8 @@ function App() {
         <Route path = "/login" element = {<Login />} />
         <Route path = "/signup" element = {<SignUp />} />
         <Route path = "/InstProfile" element = {<InstProfile />} />
+        <Route path = "/check" element = {<Checkout />} />
+       
       </Routes>
     </BrowserRouter>
     </CartProvider>
