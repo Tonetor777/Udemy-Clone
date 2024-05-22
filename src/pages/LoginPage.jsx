@@ -39,7 +39,7 @@ const LoginPage = () => {
       return;
     }
     try {
-      const response = await axios.post('http://localhost:8000/login.php', {
+      const response = await axios.post('http://localhost:8000/UDEMY/PHP/login.php', { 
         email,
         password,
       });
@@ -121,20 +121,20 @@ const LoginPage = () => {
         <div>
           <hr />
         </div>
-        <p className="text-center mt-6">
+        <div className="text-center mt-6">
           Don't have an account?{' '}
           <Link to="/signup" className="text-purple-900 font-bold underline">
     Signup
   </Link>
-          <p className="text-purple-700 font-bold text-center underline hover:text-purple-900">
+          <div className="text-purple-700 font-bold text-center underline hover:text-purple-900">
             <a
               href="/login"
               className="text-purple-700 font-bold text-center underline hover:text-purple-900"
             >
               Log in with your organization
             </a>
-          </p>
-        </p>
+          </div>
+        </div>
       </div>
     </div>
   );

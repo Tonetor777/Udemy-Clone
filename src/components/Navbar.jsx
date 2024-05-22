@@ -21,9 +21,7 @@ const Navbar = () => {
         <Link to="/signup" className="text-lg    mr-8   px-5 py-3 hover:text-gray-300">
            Teach on Udemy
         </Link>
-            <Link to="/InstProfile " className="text-lg    mr-8   px-5 py-3 hover:text-gray-300">
-            My Profile
-         </Link>
+            
         <Link to="/cart" className="relative mr-8 text-4xl text-gray-800 hover:text-orange-500">
             <MdShoppingCart />
             <span className="item-count-badge absolute top-0 right-0 bg-orange-500 text-white text-xs font-semibold w-4 h-4 flex items-center justify-center rounded-full">{total_items}</span>
@@ -36,6 +34,9 @@ const Navbar = () => {
                   <button onClick={logout} className="text-lg font-bold mr-8 border px-5 py-3  text-white  bg-black focus:outline-none hover:bg-white">
            Logout
                   </button>
+                  <Link to="/InstProfile " className="text-lg    mr-8   px-5 py-3 hover:text-gray-300">
+            My Profile
+         </Link>
             </>
             ) : 
             (

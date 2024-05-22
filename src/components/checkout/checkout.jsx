@@ -64,7 +64,7 @@ export default function Checkout(){
             <div className="mb-4">Discounts:</div>
             <hr />
             <div className="mt-2">Total:</div>
-<form action="http://localhost/resource/StripApi/checkout.php" method="post">
+<form action="http://localhost:8000/UDEMY/StripApi/checkout.php" method="post">
             <button className=" m-6 w-96 h-16 rounded bg-blue-500"> Complete Checkout</button>
             </form> </div>
         </div>
