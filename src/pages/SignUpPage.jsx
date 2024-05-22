@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Signup = () => {
@@ -18,22 +18,39 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    var url = "http://localhost:8000/signup.php"
-    var headers = {
-      "Accept":"application/json",
-      "Content-type":"application/json"
+    const url = "http://localhost:8000/UDEMY/PHP/signup.php";
+    const headers = {
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    };
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(formData)
+      });
+
+      const responseBody = await response.text(); // Get raw response text
+      try {
+        const jsonResponse = JSON.parse(responseBody); // Try to parse as JSON
+        console.log(jsonResponse);
+        if (jsonResponse.status === 'success') {
+          // Handle success
+        } else {
+          setError(jsonResponse.message || "An error occurred");
+        }
+      } catch (e) {
+        // Handle non-JSON response
+        console.error("Non-JSON response:", responseBody);
+        setError("An unexpected error occurred");
+      }
+    } catch (err) {
+      console.error("Fetch error:", err);
+      setError("An error occurred while sending the request");
     }
-    fetch(url , {
-      method: "POST", 
-      headers: headers, 
-      body:JSON.stringify(formData)
-    }).then((response) => response.json())
-    .then((response) => {
-      console.log(response)
-    }).catch((err) => {
-      console.log(err)
-    })
-  }
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen font-sans">
       <div className="w-full max-w-2xl">
@@ -128,8 +145,8 @@ const Signup = () => {
         <p className="text-center mt-4">
           Already have an account?{" "}
           <Link to="/login" className="text-purple-900 font-bold underline">
-    Log in
-  </Link>
+            Log in
+          </Link>
         </p>
       </div>
     </div>

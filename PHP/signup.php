@@ -23,7 +23,7 @@ function hashPassword($password)
     return password_hash($password, PASSWORD_BCRYPT);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $input = json_decode(file_get_contents("php://input"), true);
 
     if (
