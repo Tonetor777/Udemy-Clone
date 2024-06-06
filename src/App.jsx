@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+
 import { SidebarProvider } from './context/sidebar_context';
 import { CoursesProvider } from './context/courses_context';
 import { CartProvider } from './context/cart_context';
@@ -10,7 +10,7 @@ import {
 import {Home, SingleCourse, Cart, Courses, Login, SignUp, InstProfile} from "./pages";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
-
+import Checkout from "./components/checkout/checkout";
 function App() {
   return (
     <SidebarProvider>
@@ -23,10 +23,12 @@ function App() {
         <Route path = "/" element = {<Home />} />
         <Route path = "/courses/:id" element = {<SingleCourse />} />
         <Route path = "/category/:category" element = {<Courses />} />
-        <Route path = "/cart" element = {<Cart />} />
+        <Route path="/cart" element={ <Cart />} />
         <Route path = "/login" element = {<Login />} />
         <Route path = "/signup" element = {<SignUp />} />
         <Route path = "/InstProfile" element = {<InstProfile />} />
+        <Route path = "/check" element = {<Checkout />} />
+       
       </Routes>
     </BrowserRouter>
     </CartProvider>
