@@ -9,13 +9,10 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-<<<<<<< HEAD
+
     "test" : "vite test",
     "eject" : "vite eject"
-=======
-    "test": "vite test",
-    "eject": "vite eject"
->>>>>>> 965c9927fa58c78aa7f5349065ba81b93b0bec33
+
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",

@@ -38,4 +38,4 @@ const Signup = () => {
     <div>SignUp</div>
   )
 }
-export default SignUpPage
+export default Signup
