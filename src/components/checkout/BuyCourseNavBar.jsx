@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-// import styles from './BuyCourseNavBar.module.css';
+import styles from './BuyCourseNavBar.css';
 // import StarsRating from '../stars-rating/StarsRating';
 
 function BuyCourseNavBar({details}) {
