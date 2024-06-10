@@ -10,13 +10,10 @@ const Card = ({course}) => {
     const instructors = visible_instructors
         .map((instructor) => instructor.title)
         .join(', ');
-
     const [anchorEl, setAnchorEl] = useState(null);
-
     const openPopover = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
     const closePopover = () => {
         setAnchorEl(null);
     };
