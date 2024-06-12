@@ -50,7 +50,7 @@ function BuyCourseNavBar({details}) {
             <div className={styles.barRightContent}>
                 <div className={styles.price}>
                     <span className={styles.newPrice}>$199.99</span>
-                    <span className={styles.oldPrice}>$679.99</span>
+                    <span className={styles.oldPrice}>$699.99</span>
                 </div>
                 <button
                     type='button'
